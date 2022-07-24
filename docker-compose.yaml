@@ -1,8 +1,7 @@
 version: '3.5'
 services:
     node:
-      build:
-        context: .
+      build: .
       ports:
         - '8080:8080'
       networks:
@@ -22,9 +21,9 @@ services:
     volumes:
       - 'postgres_data:/var/lib/postgresql/data'
     environment:
-      POSTGRES_DB: $db_name
-      POSTGRES_USER: $username
-      POSTGRES_PASSWORD: $password
+      POSTGRES_DB: ARG TYPEORM_DATABASE
+      POSTGRES_USER: ARG TYPEORM_USERNAME
+      POSTGRES_PASSWORD: ARG TYPEORM_PASSWORD
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U postgres']
       interval: 10s
