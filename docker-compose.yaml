@@ -1,15 +1,15 @@
 version: '3.5'
 services:
-    node:
-      build: .
-      ports:
-        - '8080:8080'
-      networks:
-        - network
-      volumes:
-        - 'gateway_data:/app/static'
-      depends_on:
-        - postgres
+#    node:
+#      build: .
+#      ports:
+#        - '8080:8080'
+#      networks:
+#        - network
+#      volumes:
+#        - 'gateway_data:/app/static'
+#      depends_on:
+#        - postgres
     
   postgres:
     image: postgres:9.6.22-alpine
@@ -18,12 +18,12 @@ services:
       - '5432:5432'
     networks:
       - network
-    volumes:
-      - 'postgres_data:/var/lib/postgresql/data'
+#    volumes:
+#      - 'postgres_data:/var/lib/postgresql/data'
     environment:
-      POSTGRES_DB: ARG TYPEORM_DATABASE
-      POSTGRES_USER: ARG TYPEORM_USERNAME
-      POSTGRES_PASSWORD: ARG TYPEORM_PASSWORD
+      POSTGRES_DB: database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U postgres']
       interval: 10s
