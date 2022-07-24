@@ -1,9 +1,4 @@
-import {
-  CACHE_MANAGER,
-  Inject,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { CACHE_MANAGER, Inject, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
 import { ErrorTypeEnum } from 'src/common/enums';
@@ -72,6 +67,6 @@ export class AuthService {
    * @param data
    */
   public async createUser(data: CreateProfileDto): Promise<void> {
-      await this.usersService.createOne(data);
+    await this.usersService.createOne(data);
   }
 }
