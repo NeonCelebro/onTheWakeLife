@@ -1,5 +1,5 @@
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
-import { Exclude, Transform } from "class-transformer";
+import { Exclude, Transform } from 'class-transformer';
 import {
   AfterLoad,
   BaseEntity,
