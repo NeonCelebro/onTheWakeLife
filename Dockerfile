@@ -16,7 +16,7 @@ COPY --chown=node:node ./package*.json ./
 COPY --chown=node:node ./tsconfig*.json ./
 COPY --chown=node:node ./.env.${NODE_ENV} ./
 
-RUN npm install --only=production
+RUN npm install --only=development
 
 
 ### Builder
