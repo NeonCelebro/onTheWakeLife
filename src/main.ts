@@ -43,7 +43,7 @@ async function bootstrap() {
 
   await app
     .useGlobalPipes(validationPipe)
-    .listen(configService.get('PORT'), configService.get('HOST'));
+    .listen(configService.get('PORT'));
 
   if (configService.get('SWAGGER_MODULE')) {
     const config = new DocumentBuilder()
