@@ -1,6 +1,6 @@
 ### Base
 FROM node:12-alpine as base
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 
 RUN apk update --no-cache
 RUN mkdir /app && chown -R node:node /app
@@ -28,7 +28,7 @@ RUN npm run build
 
 ### Runtime
 FROM node:12-alpine as runtime
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 WORKDIR /app
 
 # Copy runtime dependencies
