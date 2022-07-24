@@ -14,7 +14,6 @@ import { Cache } from 'cache-manager';
 
 import { UserEntity } from '../users/entities';
 import { UsersService } from '../users';
-import { MailerService } from '../mailer';
 
 import { CreateProfileDto, CredentialsDto, JwtResponseDto } from './dto';
 
@@ -36,7 +35,6 @@ export class AuthService {
     private readonly configService: ConfigService,
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
-    private readonly mailerService: MailerService,
     @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {
     this.chance = new Chance();

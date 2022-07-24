@@ -5,7 +5,6 @@ import { CacheModule, Module } from '@nestjs/common';
 import { ConfigService } from 'src/config';
 
 import { UsersModule } from '../users';
-import { MailerModule, MailerService } from '../mailer';
 import { JwtStrategy } from './strategies';
 
 import { AuthController } from './auth.controller';
@@ -32,7 +31,6 @@ import * as redisStore from 'cache-manager-redis-store';
       inject: [ConfigService],
     }),
     UsersModule,
-    MailerModule,
     CacheModule.register({
       useFactory: (configService: ConfigService) => {
         return {
@@ -44,7 +42,7 @@ import * as redisStore from 'cache-manager-redis-store';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy, MailerService],
+  providers: [AuthService, JwtStrategy],
   exports: [PassportModule, AuthService],
 })
 export class AuthModule {}

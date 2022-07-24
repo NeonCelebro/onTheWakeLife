@@ -3,7 +3,7 @@ import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { DECORATORS } from '@nestjs/swagger/dist/constants';
 
 import { SetMetadata } from '@nestjs/common';
-import { RolesEnum } from '../enums';
+import { RolesEnum } from 'src/modules/users/entities';
 
 /**
  * [description]

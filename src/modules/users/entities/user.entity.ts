@@ -1,5 +1,5 @@
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
-import { Exclude } from 'class-transformer';
+import { Exclude, Transform } from "class-transformer";
 import {
   AfterLoad,
   BaseEntity,
@@ -9,12 +9,15 @@ import {
   CreateDateColumn,
   Entity,
   Index,
+  JoinColumn,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 import * as crypto from 'crypto';
 import * as bcrypt from 'bcrypt';
+import { FileEntity } from 'src/modules/user-files/entities';
 
 /**
  * [description]
@@ -179,29 +182,29 @@ export class UserEntity extends BaseEntity {
     });
   }
 
-  // /**
-  //  * [description]
-  //  */
-  // @JoinColumn()
-  // @Transform(({ value }) => {
-  //   if (value.length != 0) {
-  //     return value[0].src;
-  //   }
-  //   return null;
-  // })
-  // @ApiProperty({ type: () => String })
-  // @OneToMany(() => FileEntity, ({ owner }) => owner, { nullable: true, cascade: true, eager: true })
-  // public avatar?: Partial<FileEntity>;
-  //
-  // /**
-  //  * [description]
-  //  */
-  // @ApiHideProperty()
-  // @OneToMany(() => FileEntity, ({ owner }) => owner, {
-  //   nullable: true,
-  //   cascade: true,
-  // })
-  // public readonly files: Partial<FileEntity>[];
+  /**
+   * [description]
+   */
+  @JoinColumn()
+  @Transform(({ value }) => {
+    if (value.length != 0) {
+      return value[0].src;
+    }
+    return null;
+  })
+  @ApiProperty({ type: () => String })
+  @OneToMany(() => FileEntity, ({ owner }) => owner, { nullable: true, cascade: true, eager: true })
+  public avatar?: Partial<FileEntity>;
+
+  /**
+   * [description]
+   */
+  @ApiHideProperty()
+  @OneToMany(() => FileEntity, ({ owner }) => owner, {
+    nullable: true,
+    cascade: true,
+  })
+  public readonly files: Partial<FileEntity>[];
 
   /**
    * [description]
