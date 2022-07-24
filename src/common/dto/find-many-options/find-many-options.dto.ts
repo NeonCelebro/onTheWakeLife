@@ -10,7 +10,8 @@ import { FindOneOptionsDto } from '../find-one-options';
  */
 export class FindManyOptionsDto<Entity>
   extends FindOneOptionsDto<Entity>
-  implements FindManyOptions {
+  implements FindManyOptions
+{
   @IsArray()
   @IsOptional()
   @IsString({ each: true })

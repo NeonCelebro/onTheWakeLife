@@ -10,7 +10,8 @@ import { RolesEnum } from 'src/modules/users/entities';
  * @param roles
  * @constructor
  */
-export const Roles = (...roles: RolesEnum[]) =>
+export const Roles =
+  (...roles: RolesEnum[]) =>
   // eslint-disable-next-line @typescript-eslint/ban-types
   (target: object, key?: string | symbol, descriptor?: TypedPropertyDescriptor<any>): void => {
     const operation: OperationObject = Reflect.getMetadata(
