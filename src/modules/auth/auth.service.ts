@@ -1,6 +1,5 @@
 import {
   CACHE_MANAGER,
-  ConflictException,
   Inject,
   Injectable,
   UnauthorizedException,
@@ -72,10 +71,7 @@ export class AuthService {
    * [description]
    * @param data
    */
-  public async createUser(data: CreateProfileDto): Promise<CreateProfileDto> {
-    const existedUser = await this.usersService.selectOne({ username: data.username });
-
-    if (existedUser) throw new ConflictException(ErrorTypeEnum.USER_ALREADY_EXIST);
-    return this.usersService.createOne(data);
+  public async createUser(data: CreateProfileDto): Promise<void> {
+      await this.usersService.createOne(data);
   }
 }

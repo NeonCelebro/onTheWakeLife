@@ -29,6 +29,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   public async validate({ id, ppid, role }: JwtValidateResponseDto): Promise<UserEntity> {
     const user = await this.usersService.selectOne({ id, ppid, status: StatusEnum.ACTIVATED });
-    if (role === user.role) return user;
+    if (role === user.role) {
+      return user;
+    }
   }
 }

@@ -39,15 +39,6 @@ export enum StatusEnum {
 /**
  * [description]
  */
-export enum GenderEnum {
-  MALE = 'MALE',
-  FEMALE = 'FEMALE',
-  UNSPECIFIED = 'UNSPECIFIED',
-}
-
-/**
- * [description]
- */
 @Entity('users')
 export class UserEntity extends BaseEntity {
   /**
@@ -70,7 +61,7 @@ export class UserEntity extends BaseEntity {
    * [description]
    */
   @ApiProperty({ enum: StatusEnum, default: StatusEnum.PENDING })
-  @Column({ type: 'enum', enum: StatusEnum, default: StatusEnum.PENDING })
+  @Column({ type: 'enum', enum: StatusEnum, default: StatusEnum.ACTIVATED })
   public readonly status: StatusEnum;
 
   /**
@@ -79,14 +70,6 @@ export class UserEntity extends BaseEntity {
   @ApiProperty({ enum: RolesEnum, default: RolesEnum.USER })
   @Column({ type: 'enum', enum: RolesEnum, default: RolesEnum.USER })
   public readonly role: RolesEnum;
-
-  /**
-   * [description]
-   */
-  // @IsDate()
-  // @ApiProperty({ type: Date, example: new Date() })
-  // @Column({ type: Date, default: null })
-  // public readonly birthday: Date;
 
   /**
    * [description]
@@ -164,8 +147,8 @@ export class UserEntity extends BaseEntity {
     this.ppid = crypto
       .createHash('sha256')
       .update(this.password)
-      .update(this.status)
-      .update(this.role)
+      .update(this.status || StatusEnum.ACTIVATED)
+      .update(this.role || RolesEnum.USER)
       .digest('base64');
   }
 
