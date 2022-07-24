@@ -1,0 +1,15 @@
+node_modules
+.git
+.github
+dist
+.idea
+Dockerfile
+.eslintrc.js
+.gitignore
+.prettierignore
+.prettierrc
+CHANGELOG.md
+README.md
+docker-compose.yaml 
+heroku.yml
+test
