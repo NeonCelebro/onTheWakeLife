@@ -9,7 +9,7 @@ export const users: Partial<UserEntity>[] = [
     firstName: 'Oleg',
     lastName: 'Neon',
     username: '#23RF@!SDV',
-    password: '$2b$08$XpX3up0mK.LbJUMoH2S6lOeKdBQiuNzN52EAwVqQhVICKnYDrhqzy',
+    password: '$2b$08$B3fz/fA.6fMTktnNyNIAkeqMkpqVxG.XKHLj2Kal.RKg0ebiVMnCO', //"OnTheWake2022!"
     phoneNumber: '+996777320693',
     telegram: '@cotcelebro',
   },
