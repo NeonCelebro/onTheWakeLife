@@ -22,6 +22,7 @@ import { ConfigService } from 'src/config';
         migrationsRun: configService.get('TYPEORM_MIGRATIONS_RUN'),
         entities: [dirname(__dirname) + '/modules/**/*.entity.{ts,js}'],
         migrations: [__dirname + '/migrations/*.{ts,js}'],
+        ssl: configService.get('SSL') || false
       }),
       inject: [ConfigService],
     }),
