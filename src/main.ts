@@ -39,7 +39,7 @@ async function bootstrap() {
   ]);
 
   await app.useGlobalPipes(validationPipe).listen(process.env.PORT || 8080);
-
+  console.log(`!!!!!!!!!!!!! PROCESS PORT: ${process.env.PORT}!!!!!!!!!!!!!!!!!!!`);
   if (configService.get('SWAGGER_MODULE')) {
     const config = new DocumentBuilder()
       .setVersion(configService.get('npm_package_version'))
