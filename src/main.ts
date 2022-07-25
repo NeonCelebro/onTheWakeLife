@@ -27,10 +27,7 @@ async function bootstrap() {
     },
   });
 
-  app.setGlobalPrefix(configService.get('PREFIX')).enableCors({
-    credentials: configService.get('CORS_CREDENTIALS'),
-    origin: configService.get('CORS_ORIGIN'),
-  });
+  app.setGlobalPrefix(configService.get('PREFIX'));
 
   await Promise.all([
     app.register(compress, { encodings: ['gzip', 'deflate'] }),
