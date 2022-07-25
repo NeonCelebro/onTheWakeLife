@@ -41,7 +41,7 @@ async function bootstrap() {
     }),
   ]);
 
-  await app.useGlobalPipes(validationPipe).listen(configService.get('PORT') || 3000);
+  await app.useGlobalPipes(validationPipe).listen(configService.get('PORT') || 8080);
 
   if (configService.get('SWAGGER_MODULE')) {
     const config = new DocumentBuilder()
