@@ -23,7 +23,7 @@ import { ConfigService } from 'src/config';
         entities: [dirname(__dirname) + '/modules/**/*.entity.{ts,js}'],
         migrations: [__dirname + '/migrations/*.{ts,js}'],
         url: process.env.DATABASE_URL,
-        ssl: { rejectUnauthorized: false }
+        ssl: { rejectUnauthorized: false },
       }),
       inject: [ConfigService],
     }),
